@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #1E1E1E;
+}
+
+.editor-window {
+    height: calc(100vh - 50px);
+    width: 1175px;
+}
+
+.upper-btn {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'JetBrains Mono';
+    color: #e0c4c4;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.463);
+    border-top: none;
+    border-bottom: none;
+    background-color: rgb(28, 6, 58);
+    cursor: pointer;
+    box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.463);
+}
+
+.upper-btn:hover {
+    background-color: rgb(58, 11, 125);
+}
+
+.upper-btn:focus {
+    background-color: rgb(120, 74, 186);
+}
+
+.upper-btn:target {
+    background-color: rgb(120, 74, 186);
+
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-btn {
+    border-radius: 5px;
+    height: 40px;
+    position: fixed;
+    right: 30px;
+}
+
+#add-1 {
+    bottom: 30px;
+}
+
+#add-2 {
+    bottom: 100px;
+}
+
+#add-3 {
+    bottom: 170px;
+}
+
+.container {
+    display: flex;
+}
+
+.explorer-container {
+    background-color: #fff;
+}
+

@@ -1,0 +1,315 @@
+-----С-----
+
+#include <stdio.h>
+
+int factorial(int n) {
+  if (n == 0) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+
+int main() {
+  int n = 5;
+  int result = factorial(n);
+  printf("Факториал числа %d равен %d", n, result);
+  return 0;
+}
+
+-----С#-----
+
+using System;
+
+class Program {
+  static int factorial(int n) {
+    if (n == 0) {
+      return 1;
+    } else {
+      return n * factorial(n - 1);
+    }
+  }
+
+  static void Main(string[] args) {
+    int n = 5;
+    int result = factorial(n);
+    Console.WriteLine("Факториал числа {0} равен {1}", n, result);
+  }
+}
+
+-----C++-----
+
+#include <iostream>
+
+int factorial(int n) {
+  if (n == 0) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+
+int main() {
+  int n = 5;
+  int result = factorial(n);
+  std::cout << "Факториал числа " << n << " равен " << result << std::endl;
+  return 0;
+}
+
+-----CSS-----
+
+/* Стилизованный заголовок */
+h1 {
+  font-size: 36px;
+  color: #333;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Стилизованная кнопка */
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Стилизованная кнопка при наведении */
+.button:hover {
+  background-color: #0062cc;
+}
+
+-----HTML-----
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Page</title>
+</head>
+<body>
+  <h1>Welcome to my page!</h1>
+  <img src="image.jpg" alt="My Image">
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+</body>
+</html>
+
+-----JAVA----
+
+public class AverageCalculator {
+    public static double calculateAverage(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return (double) sum / arr.length;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        double average = calculateAverage(arr);
+        System.out.println("Average: " + average);
+    }
+}
+
+-----JAVASCRIPT-----
+
+function factorial(n) {
+  if (n === 0 || n === 1) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+
+let num = 5;
+let result = factorial(num);
+console.log('Factorial of' num ' is ' result);
+
+-----JSON-----
+
+{
+  "name": "John",
+  "age": 30,
+  "email": "john@example.com",
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "state": "CA",
+    "zip": "12345"
+  },
+  "phone_numbers": [
+    {
+      "type": "home",
+      "number": "555-1234"
+    },
+    {
+      "type": "work",
+      "number": "555-5678"
+    }
+  ]
+}
+
+-----PHP-----
+
+function factorial($n) {
+  if ($n == 0 || $n == 1) {
+    return 1;
+  } else {
+    return $n * factorial($n - 1);
+  }
+}
+
+$num = 5;
+$result = factorial($num);
+echo "Factorial of $num is $result";
+
+-----PYTHON-----
+
+import random
+
+# Генерируем случайное число от 1 до 100
+number = random.randint(1, 100)
+
+# Запрашиваем у пользователя ввод для угадывания числа
+guess = int(input("Guess the number between 1 and 100: "))
+
+# Сравниваем введенное число с загаданным
+while guess != number:
+  if guess < number:
+    print("Too low, try again!")
+  else:
+    print("Too high, try again!")
+  guess = int(input("Guess again: "))
+
+# Выводим сообщение об успешном угадывании числа
+print("Congratulations! You guessed the number!")
+
+-----RUBY------
+
+def is_prime?(num)
+  return false if num <= 1
+  (2..Math.sqrt(num)).each do |i|
+    return false if num % i == 0
+  end
+  true
+end
+
+num = 17
+if is_prime?(num)
+  puts "#{num} is a prime number"
+else
+  puts "#{num} is not a prime number"
+end
+
+-----RUST-----
+
+use rand::Rng;
+use std::io;
+
+fn main() {
+  let secret_number = rand::thread_rng().gen_range(1, 101);
+  println!("Guess the number between 1 and 100!");
+
+  loop {
+    let mut guess = String::new();
+    io::stdin().read_line(&mut guess).expect("Failed to read line");
+    let guess: u32 = match guess.trim().parse() {
+      Ok(num) => num,
+      Err(_) => continue,
+    };
+
+    println!("You guessed: {}", guess);
+
+    match guess.cmp(&secret_number) {
+      std::cmp::Ordering::Less => println!("Too small!"),
+      std::cmp::Ordering::Greater => println!("Too big!"),
+      std::cmp::Ordering::Equal => {
+        println!("You win!");
+        break;
+      }
+    }
+  }
+}
+
+-----SQL-----
+
+CREATE TABLE users (
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  email VARCHAR(50)
+);
+
+INSERT INTO users (id, name, email)
+VALUES (1, 'John Doe', 'johndoe@example.com'),
+       (2, 'Jane Smith', 'janesmith@example.com'),
+       (3, 'Bob Johnson', 'bobjohnson@example.com');
+
+SELECT * FROM users;
+
+-----TYPESCRIPT-----
+
+class Person {
+  name: string;
+  age: number;
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+  greet() {
+    console.log('Hello, my name is' name ' and I am ' age 'years old.');
+  }
+}
+
+const person = new Person("John", 30);
+person.greet();
+
+-----XML-----
+
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+  <book category="fiction">
+    <title>Над пропастью во ржи</title>
+    <author>Дж. Д. Сэлинджер</author>
+    <price>25.99</price>
+  </book>
+  <book category="non-fiction">
+    <title>Краткая история времени</title>
+    <author>Стивен Хокинг</author>
+    <price>29.99</price>
+  </book>
+</bookstore>
+
+-----YAML-----
+
+# Информация о пользователе
+user:
+name: John Doe
+age: 30
+email: john.doe@example.com
+address:
+	street: 123 Main St
+	city: Anytown
+	state: CA
+	zip: "12345"
+	country: USA
+
+# Другие настройки
+settings:
+notifications: true
+theme: dark
+language: en-US
+
+
+
+
+
