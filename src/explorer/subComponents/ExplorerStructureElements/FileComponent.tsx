@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import { fileInstance } from "../../../editor/App";
+import { VirtualFileSystemUpdater } from "../../classes/VirtualFilesSystem/VirtualFileSystemUpdater";
+//import { fileInstance } from "../../../editor/App";
 
 function FileComponent(props: { 
 								path 		    : string, 
@@ -7,8 +8,8 @@ function FileComponent(props: {
 								index 		    : number, 
 								selectState     : String, 
 								setSelectState  : Dispatch<SetStateAction<String>>,
-								setSharedFiles  : Dispatch<SetStateAction<fileInstance | undefined>>,
-								sharedFiles     : fileInstance | undefined
+								//setSharedFiles  : Dispatch<SetStateAction<fileInstance | undefined>>,
+								//sharedFiles     : fileInstance | undefined
 							  })
 {
 	const divRef = useRef<HTMLDivElement>(null);
@@ -34,14 +35,23 @@ function FileComponent(props: {
 	const handleClick = () =>
 	{
 		props.setSelectState(new String(props.path));
-		const currentFile: fileInstance = {
-			name: pathElements[length],
-			path: props.path,
-			value: props.text
-		}
+		// const currentFile: fileInstance = {
+		// 	name: pathElements[length],
+		// 	path: props.path,
+		// 	value: props.text
+		// }
 
 		// props.setSharedFiles(setFiles(currentFile))
-		props.setSharedFiles(currentFile)
+		//9props.setSharedFiles(currentFile)
+	}
+
+	const handleKeyDown = (event : React.KeyboardEvent<HTMLDivElement>) =>
+	{
+		if (event.key === "Delete" && isSelected) 
+		{
+			VirtualFileSystemUpdater.removeFile(props.path);
+			props.setSelectState(new String(""));
+		}
 	}
 
 	const setName = () => 
@@ -53,6 +63,7 @@ function FileComponent(props: {
 		<div  
 			key={props.index} 
 			onClick={handleClick} 
+			onKeyDown={handleKeyDown}
 			//onFocus={handleClick}
 			ref={divRef} 
 			tabIndex={props.index}

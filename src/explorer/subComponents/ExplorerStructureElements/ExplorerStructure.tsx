@@ -3,9 +3,10 @@ import DirectoryComponent from "./DirectoryComponent";
 import FileComponent from "./FileComponent";
 import VirtualFileSystemInstance from "../../classes/VirtualFilesSystem/VirtualFileSystemInstance";
 import Directory from "../../classes/FileSystemElements/Directory";
+import File from "../../classes/FileSystemElements/File";
 import { FileSystemElement } from "../../classes/FileSystemElements/FileSystemElement";
 import { RootBuilder } from "../../classes/VirtualFilesSystem/RootBuilder";
-import { fileInstance } from "../../../editor/App";
+//import { fileInstance } from "../../../editor/App";
 
 function ExplorerStructure(props : { 
                                         structureState    : boolean, 
@@ -13,8 +14,8 @@ function ExplorerStructure(props : {
                                         creatorState      : boolean,
                                         setCreatorState   : Dispatch<SetStateAction<boolean>>,
                                         elementType       : string,
-                                        setSharedFiles    : Dispatch<SetStateAction<fileInstance | undefined>>,
-                                        sharedFiles       : fileInstance | undefined
+  //                                      setSharedFiles    : Dispatch<SetStateAction<fileInstance | undefined>>,
+   //                                     sharedFiles       : fileInstance | undefined
                                     }) 
 {
     const [selectState, setSelectState] = useState<String>(new String(""));
@@ -81,8 +82,8 @@ function ExplorerStructure(props : {
                                         selectState={selectState} 
                                         text={fileElement.text}
                                         setSelectState={setSelectState} 
-                                        setSharedFiles={props.setSharedFiles}
-                                        sharedFiles={props.sharedFiles}
+                                       // setSharedFiles={props.setSharedFiles}
+                                        //sharedFiles={props.sharedFiles}
                                 />);
                 }
 
