@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { VirtualFileSystemUpdater } from "../../classes/VirtualFilesSystem/VirtualFileSystemUpdater";
-//import { fileInstance } from "../../../editor/App";
+import { fileInstance } from "../../../editor/App";
 
 function FileComponent(props: { 
 								path 		    : string, 
@@ -8,8 +8,8 @@ function FileComponent(props: {
 								index 		    : number, 
 								selectState     : String, 
 								setSelectState  : Dispatch<SetStateAction<String>>,
-								//setSharedFiles  : Dispatch<SetStateAction<fileInstance | undefined>>,
-								//sharedFiles     : fileInstance | undefined
+								setSharedFiles  : Dispatch<SetStateAction<fileInstance | undefined>>,
+								sharedFiles     : fileInstance | undefined
 							  })
 {
 	const divRef = useRef<HTMLDivElement>(null);
@@ -35,14 +35,14 @@ function FileComponent(props: {
 	const handleClick = () =>
 	{
 		props.setSelectState(new String(props.path));
-		// const currentFile: fileInstance = {
-		// 	name: pathElements[length],
-		// 	path: props.path,
-		// 	value: props.text
-		// }
+		const currentFile: fileInstance = {
+			name: pathElements[length],
+			path: props.path,
+			value: props.text
+		};
 
 		// props.setSharedFiles(setFiles(currentFile))
-		//9props.setSharedFiles(currentFile)
+		props.setSharedFiles(currentFile);
 	}
 
 	const handleKeyDown = (event : React.KeyboardEvent<HTMLDivElement>) =>
