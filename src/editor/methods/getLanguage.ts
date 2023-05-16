@@ -1,6 +1,6 @@
 import { IFile } from "../models";
 
-export function createWindow(name: string, value: string): IFile {
+export function createWindow(name: string, value: string, path: string | undefined): IFile {
 
     let definedLanguage = ''
 
@@ -80,6 +80,7 @@ export function createWindow(name: string, value: string): IFile {
     return {
         name: name,
         language: definedLanguage,
-        value: value
+        value: value,
+        path: path
     }
 }

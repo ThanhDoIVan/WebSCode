@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { createWindow } from '../methods/getLanguage'
 import { TypeFiles, IFile } from "../models"
 import { files } from "../data/files"
+import { fileInstance } from "../App"
 
 export function useFiles() {
 
@@ -18,31 +19,35 @@ export function useFiles() {
 		return keys
 	}
 
-    function addFile(name: string, value: string) {
+    function addFile(name: string, value: string, path: string | undefined) {
 
-        if (!(fileKeys.includes(name))) {
+        const file = createWindow(name, value, path)
+        files[name] = file
+        console.log(file);
 
-            const file = createWindow(name, value)
-            files[name] = file
-    
+        if (!(fileKeys.includes(name))) {    
             setFileKeys( (prev) => [...prev, name] )
-            setFileName(name)
         }
-        else {
-            setFileName(name)
-        }
+
+        setFileName(name)
     }
 
 	const [fileKeys, setFileKeys] = useState<string[]>(() => listFiles(files))
 	
-	const [fileName, setFileName] = useState("index.js")
-	const file: IFile = files[fileName]
+	const [fileName, setFileName] = useState("empty")
 
-    // const [file_name, setFile_Name] = useState("")
-    // const [file_value, setFile_Value] = useState("")
+    // const [file, setFile] = useState<IFile>(files[fileName])
+    let file: IFile = files[fileName]
+
+    // useEffect( () => {
+    //     //if(fileName !== "empty") {
+    //         file = files[fileName]
+    //         console.log("inside getfiles FILE", file)
+    //         //setFile(newFile)
+    //     //}
+    // }, [fileName])
 
     return { 
-        fileKeys, file, setFileName, addFile, setFileKeys
-        // file_name, file_value, setFile_Name, setFile_Value
+        fileKeys, file, setFileName, addFile, setFileKeys, fileName
     }
 }

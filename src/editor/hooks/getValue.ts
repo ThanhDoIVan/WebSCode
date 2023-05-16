@@ -1,5 +1,6 @@
 import {useRef} from 'react'
 import * as monaco from 'monaco-editor'
+import { fileInstance } from '../App'
 
 export function useValue() {
 
@@ -9,33 +10,27 @@ export function useValue() {
 		editorRef.current = editor
 	}
 
-	function getEditorValue() {
+	function getEditorValue(): string {
 		if (editorRef.current !== null) {
-			alert(editorRef.current.getValue())
-			console.log(editorRef.current.getValue())
-
-			// return editorRef.current.getValue()
+			alert (editorRef.current.getValue())
+			return editorRef.current.getValue()
+		}
+		else {
+			return ""
 		}
 	}
 
-	function getEditorInfo(name: string, path: string) {
-		getEditorValue()
-		console.log(name)
-		console.log(path)
+	function getEditorInfo(name: string, path: string | undefined): fileInstance {
+		const value = getEditorValue()
 
-		// return {name, path, value}
+		const currentFile: fileInstance = {
+			name: name,
+			value: value,
+			path: path
+		}
+
+		return currentFile
 	}
 
-	function saveEditorInfo(name: string, path: string) {
-		document.addEventListener("keydown", (event: KeyboardEvent) => {
-			if (event.key === 's' && event.ctrlKey) {
-				event.preventDefault()
-				getEditorInfo(name, path)
-				console.log('----------------');
-				// console.log(123);
-			}
-		})
-	}
-
-    return {handleEditorDidMount, getEditorInfo, saveEditorInfo}
+    return {handleEditorDidMount, getEditorInfo}
 }
