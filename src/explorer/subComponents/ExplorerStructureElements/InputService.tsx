@@ -50,16 +50,17 @@ function InputService(props : {
 	}
 
 	return(
-		<div className="Element creator">
+		<div className="Element creator creation">
 			<input 
+				className="explorer-input"
 				type="text" 
 				id="IS_Input" 
 				value={name}
 				onChange={(event) => setName(event.target.value)}
 			/>
 					
-			<button onClick={okeyInputHandler}>Okay</button>
-			<button onClick={cancelInputHandler}>Cancel</button>
+			<button className="explorer-btn-small" onClick={okeyInputHandler}>Okay</button>
+			<button className="explorer-btn-small" onClick={cancelInputHandler}>Cancel</button>
 		</div>
 	);
 }

@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, DragEvent, useState } from "react";
-import "../styles/dropzone.css";
+//import "../styles/dropzone.css";
 import { RootBuilder } from "../classes/VirtualFilesSystem/RootBuilder";
 import LocalStorageWorker from "../classes/VirtualFilesSystem/LocalStorageWorker";
 
@@ -30,13 +30,15 @@ function Inputs(props : {
 
     return(
         <div>
-            <div draggable id="dropzone" onDrop={inputHandler} onDragOver={(event) => { event.preventDefault(); }}>
+            <div draggable className="dropzone" onDrop={inputHandler} onDragOver={(event) => { event.preventDefault(); }}>
                 <div>Drop Files Here</div>
             </div>
 
-            <button onClick={() => LocalStorageWorker.saveProject()}>Save project</button>
-            <button onClick={() => addElement('ADD FILE')}>Add file</button>
-            <button onClick={() => addElement('ADD DIRECTORY')}>Add directory</button>
+            <div className="explorer-btn-container">
+                <button className="explorer-btn" onClick={() => LocalStorageWorker.saveProject()}>Save project</button>
+                <button className="explorer-btn" onClick={() => addElement('ADD FILE')}>Add file</button>
+                <button className="explorer-btn" onClick={() => addElement('ADD DIRECTORY')}>Add directory</button>
+            </div>
         </div>
     );
 }

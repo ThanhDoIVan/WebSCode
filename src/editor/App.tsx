@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Explorer from '../explorer/subComponents/Explorer'
 import { EditorField } from './components/EditorField'
 import { FileGetValue } from './components/FileGetValue'
@@ -21,14 +21,27 @@ function App() {
 
 	const { handleEditorDidMount, getEditorInfo } = useValue()
 
-	//const [updateComponent, setUpdateComponent] = useState<boolean>()
-
 	const [sharedFiles, setSharedFiles] = useState<fileInstance>()
 
+	const fileInstance = useRef<fileInstance>();
+
 	useEffect(() => {
-		if (sharedFiles !== undefined) {
+		if (sharedFiles !== undefined) 
+		{
+			fileInstance.current = sharedFiles;
 			addFile(sharedFiles.name, sharedFiles.value, sharedFiles.path)
 			console.log("shared", sharedFiles)
+		}
+		else
+		{
+			if (fileInstance.current !== undefined) 
+			{
+				setFileKeys(fileKeys.filter((key) => key !== fileInstance.current?.name));
+				delete files[fileInstance.current.name];
+				fileInstance.current = undefined;
+				console.log("Keys", fileKeys);
+				setFileName("empty");
+			}
 		}
 	}, [sharedFiles])
 

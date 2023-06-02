@@ -83,7 +83,7 @@ export class VirtualFileSystemUpdater extends VirtualFileSystemInstance
         }
     }
 
-    public static removeFile(path : string) : void
+    public static removeFile(path : string, sharedPath : string) : boolean
     {
         const pathParts = path.split('/').filter(item => item !== VirtualFileSystemInstance.root.name);
         const removableElement = pathParts[pathParts.length - 1];
@@ -95,11 +95,13 @@ export class VirtualFileSystemUpdater extends VirtualFileSystemInstance
         {
             parentDirectory.files = newFiles;    
         }
+
+        return sharedPath.includes(path);
     }
 
     public static async removeDirectory(path : string) : Promise<void>
     {
-        const pathParts = path.split('/').filter((item) => {return item !== ""});;
+        const pathParts = path.split('/').filter((item) => {return item !== ""});
         const removableElement = pathParts[pathParts.length - 1];
         pathParts.pop();
         const parentDirectory = this.getParentDirectory(pathParts);
@@ -119,7 +121,18 @@ export class VirtualFileSystemUpdater extends VirtualFileSystemInstance
         }
     }
 
+    public static changeFile(path : string, updatedFile : File)
+    {
+        const pathParts = path.split('/').filter((item) => {return item !== ""});
+        const parentDirectory = VirtualFileSystemUpdater.getParentDirectory(pathParts);
 
+        let files = parentDirectory.files.filter((item) => { return item.name === updatedFile.name });
+
+        if (files.length > 0) 
+        {
+            files[0].text = updatedFile.text;    
+        }
+    }
 
     private static getParentDirectory(pathParts : string[]) : Directory
     {

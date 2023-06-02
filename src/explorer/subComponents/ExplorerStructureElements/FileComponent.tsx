@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import React, { Dispatch, SetStateAction, useRef } from "react";
 import { VirtualFileSystemUpdater } from "../../classes/VirtualFilesSystem/VirtualFileSystemUpdater";
 import InputService from "./InputService";
 import { fileInstance } from "../../../editor/App";
@@ -38,7 +38,8 @@ function FileComponent(props: {
 	{
 		if (event.key === "Delete" && isSelected) 
 		{
-			VirtualFileSystemUpdater.removeFile(props.path);
+			VirtualFileSystemUpdater.removeFile(props.path, props.sharedFiles?.path!);
+			props.setSharedFiles(undefined);
 			props.setSelectState(new String(""));
 		}
 		if (event.code === 'F2' && isSelected) 

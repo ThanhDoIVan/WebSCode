@@ -14,7 +14,6 @@ export function useFiles() {
 			keys.push(key)
 			console.log(files[key]); 		// all objects
 		}
-        console.log(`----------------`);
 	
 		return keys
 	}
@@ -36,7 +35,6 @@ export function useFiles() {
 	
 	const [fileName, setFileName] = useState("empty")
 
-    // const [file, setFile] = useState<IFile>(files[fileName])
     let file: IFile = files[fileName]
 
     // useEffect( () => {

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Montserrat:wght@400;700&display=swap');
 
 * {
     padding: 0;
@@ -11,7 +11,7 @@ body {
 
 .editor-window {
     height: calc(100vh - 50px);
-    width: 1175px;
+    width: 1200px;
 }
 
 .upper-btn {
@@ -30,6 +30,14 @@ body {
 }
 
 .upper-btn:hover {
+    background-color: rgb(58, 11, 125);
+}
+
+.explorer-btn-small:hover {
+    background-color: rgb(58, 11, 125);
+}
+
+.explorer-btn:hover {
     background-color: rgb(58, 11, 125);
 }
 
@@ -72,5 +80,60 @@ body {
 
 .explorer-container {
     background-color: #fff;
+    font-family: 'Montserrat';
+    font-size: 17px;
 }
 
+.explorer-input {
+    font-family: 'Montserrat';
+    border: 1px solid black;
+    padding: 0 5px;
+}
+
+.explorer-btn-small {
+    padding: 5px 5px;
+    border-right: 1px solid rgba(255, 255, 255, 0.463);
+    border-top: none;
+    border-bottom: none;
+    background-color: rgb(28, 6, 58);
+    cursor: pointer;
+    color: #fff;
+    width: 65px;
+}
+
+.dropzone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 310px;
+    height: 100px;
+    border: 2px solid #fff;
+    color: #fff;
+    font-weight: bold;
+    background-color: #1E1E1E;
+}
+
+.explorer-btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.explorer-btn {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 300;
+    color: #e0c4c4;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.463);
+    border-top: none;
+    border-bottom: none;
+    background-color: rgb(28, 6, 58);
+    cursor: pointer;
+}
+
+.creation {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+}

@@ -11,7 +11,7 @@ export function FileGetValue( {getValue}: FileGetValue) {
             onClick={ () => {
                 getValue()
             } }>
-            GetValue
+            Save File
         </button>
     )
 }
